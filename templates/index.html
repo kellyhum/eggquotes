@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <!--stylesheet-->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}">
+
+    <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+
+    <title>Eggquotes!</title>
 </head>
 <body>
-    Hello World 1
+    <div id="title">
+        <h1>Eggquotes!</h1>
+        <p>who said that - shakespeare quote edition</p>
+    </div>
+
+    <div id="quote">
+        <label for="play">play:</label>
+        <select id="play">
+            <option value="r+j">Romeo and Juliet</option>
+            <option value="macbeth">Macbeth</option>
+        </select>
+
+        <label for="questions">questions:</label>
+        <select id="questions">
+            <option value="10">10</option>
+        </select>
+    </div>
+
+    <div id="userinput">
+        <form>
+            <label for="author" id="author-title">Who said this?</label>
+            <input type="text" id="author" placeholder="Start typing...">
+        </form>
+    </div>
 </body>
 </html>
