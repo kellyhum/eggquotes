@@ -13,15 +13,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
 
+    <!--favicons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename = 'favicons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename = 'favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename = 'favicons/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename = 'favicons/site.webmanifest') }}">
+
     <title>Eggquotes!</title>
 </head>
 <body>
-    <div id="title">
-        <h1>Eggquotes!</h1>
+    <div class="container">
+        <h1 class="title-text">🍳Eggquotes!</h1>
         <p>who said that - shakespeare quote edition</p>
     </div>
 
-    <div id="quote">
+    <div class="container">
         <label for="play">play:</label>
         <select id="play">
             <option value="r+j">Romeo and Juliet</option>
@@ -30,15 +36,29 @@
 
         <label for="questions">questions:</label>
         <select id="questions">
+            <option value="5">5</option>
             <option value="10">10</option>
+            <option value="15">15</option>
         </select>
+
+        <div id="quote-container">
+            <q id="quote-text">This is a quote.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </q>
+        </div>
     </div>
 
-    <div id="userinput">
-        <form>
-            <label for="author" id="author-title">Who said this?</label>
-            <input type="text" id="author" placeholder="Start typing...">
+    <div class="container">
+        <form action="?" method="post">
+            <label for="answer" id="answer-title" class="title-text">Who said this?</label>
+            <input type="text" id="answer" name="answer" placeholder="Start typing...">
         </form>
+        {{ answer_list }}
+    </div>
+
+    <div class="container" id="progress-bar-container">
+        <div id="progress-bar"></div>
     </div>
 </body>
 </html>
