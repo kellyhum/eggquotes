@@ -1,10 +1,16 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, url_for, request
 
 app = Flask(__name__)
 
-@app.route('/')
+answer_list = []
+
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template('index.html')
+    if request.method == 'POST':
+        answer = request.form.get('answer')
+        answer_list.append(f'{answer}')
+        
+    return render_template('index.html', answer_list = answer_list)
 
 if __name__ == '__main__':
     app.run(debug=True)
