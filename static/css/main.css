@@ -4,6 +4,8 @@
     --light:  #F9F4EF;
     --light-brown: #EADDCF;
     --dark-brown :#8C7851;
+    --error: #e76f51;
+    --correct: #b5c99a;
 }
 
 /* GENERAL------------------------------------------- */
@@ -58,6 +60,10 @@ select {
 }
 
 /* QUOTE SECTION------------------------------------ */
+.dropdown {
+    display: inline-block;
+}
+
 #play {
     margin-right: 1rem;
 }
@@ -72,6 +78,21 @@ select {
 #quote-text {
     font-size: 1.25em;
     font-weight: 500;
+}
+
+.result {
+    margin-top: 2rem;
+    padding: 1rem;
+    width: fit-content;
+    border-radius: 0.25rem;
+}
+
+.result.right {
+    background-color: var(--correct);
+}
+
+.result.wrong {
+    background-color: var(--error);
 }
 
 /* WHO SAID THAT SECTION---------------------------- */
