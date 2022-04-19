@@ -28,23 +28,26 @@
     </div>
 
     <div class="container">
-        <label for="play">play:</label>
-        <select id="play">
-            <option value="r+j">Romeo and Juliet</option>
-            <option value="macbeth">Macbeth</option>
-        </select>
-
-        <label for="questions">questions:</label>
-        <select id="questions">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-        </select>
+        <form method="post" class="dropdown">
+            <label for="play">play:</label>
+            <select id="play" name="play">
+                <option value="r+j">Romeo and Juliet</option>
+                <option value="macbeth">Macbeth</option>
+            </select>
+        </form>
+        
+        <form method="post" class="dropdown">
+            <label for="questions">questions:</label>
+            <select id="questions" name="questions">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+            </select>
+        </form>
 
         <div id="quote-container">
-            <q id="quote-text">This is a quote.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            <q id="quote-text">
+                {{ quote_text }}
             </q>
         </div>
     </div>
@@ -54,11 +57,23 @@
             <label for="answer" id="answer-title" class="title-text">Who said this?</label>
             <input type="text" id="answer" name="answer" placeholder="Start typing...">
         </form>
-        {{ answer_list }}
+
+        {% if result == 'Correct :)' %}
+        <div class="result right">
+            {{ result }}
+        </div>
+
+        {% elif result == 'Incorrect :"(' %}
+        <div class="result wrong">
+            {{ result }}
+        </div>
+        {% endif %}
+
+        {{ quote_answer }}
     </div>
 
     <div class="container" id="progress-bar-container">
-        <div id="progress-bar"></div>
+        <div id="progress-bar" style="width: {{ width_dynamic }}%"></div>
     </div>
 </body>
 </html>
