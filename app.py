@@ -12,15 +12,17 @@ app = Flask(__name__)
 
 width = 0
 
+count = 0 # testing purposes
+
 # home route and view
 @app.route('/', methods=['GET','POST'])
 def home():
-    global width
+    global width, count # count -> testing purposes
     result = '' # would also raise referenced before assignment error if not declared
 
-    ran_count = random.randrange(len(question_object)) # random number between 0 and total # of entries in question_object list
+    # ran_count = random.randrange(len(question_object)) # random number between 0 and total # of entries in question_object list
 
-    quote_item = question_object[ran_count] # main quote item (dict with 'text' and 'author')
+    quote_item = question_object[count] # main quote item (dict with 'text' and 'author')
     quote_text = quote_item['text']
     quote_answer = quote_item['author']
 
@@ -34,9 +36,10 @@ def home():
         else:
             result = 'Incorrect :"('
         
-        print(answer.lower(), quote_item['author'].lower())
-        print(quote_item)
-        print(width)
+        count += 1
+
+    if width == 100:
+        result = 'Congratulations! You\'ve finished the quiz!' # <-- troubleshoot this
         
     return render_template('index.html', quote_text = quote_text, quote_answer = quote_answer, result = result, width_dynamic = width)
 
