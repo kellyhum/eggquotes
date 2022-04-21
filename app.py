@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, abort
+from flask import Flask, render_template, url_for, request
 import json
 import random
 
@@ -29,7 +29,7 @@ def home():
     if request.method == 'POST':
         answer = request.form.get('answer') # get the user input
 
-        if answer.lower() == quote_item['author'].lower():
+        if answer.lower() == quote_answer.lower():
             result = 'Correct :)'
             width += 10
 
